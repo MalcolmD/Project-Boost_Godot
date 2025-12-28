@@ -33,7 +33,7 @@ environment = SubResource("Environment_hbghi")
 transform = Transform3D(-0.9930397, 0.10200044, -0.05888994, 2.780595e-08, 0.49999994, 0.86602545, 0.11777994, 0.85999763, -0.4965198, 0, 63.201485, -99.1724)
 shadow_enabled = true
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="Floor" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45062256, -4, 0)
 use_collision = true
 size = Vector3(49.473755, 8, 5)

@@ -15,4 +15,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if "Goal" in body.get_groups():
-		print("You Win!")
+		print("You Made It!")
+	if "Hazard" in body.get_groups():
+		print("You Crashed!")
