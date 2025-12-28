@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
 
 func _on_body_entered(body: Node) -> void:
-	if "Goal" in body.get_groups():
+	if "Goal" in body.get_groups():		
 		complete_level()
 	if "Hazard" in body.get_groups():
 		crash_sequence()
@@ -25,8 +25,8 @@ func _on_body_entered(body: Node) -> void:
 func crash_sequence() -> void:
 	print("KABOOM! You crashed!")
 	#call_deferred()
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 	
 func complete_level() -> void:
 	print("You Made It!")
-	get_tree().quit()
+	get_tree().call_deferred("quit")
