@@ -6,7 +6,8 @@ func _process(delta: float) -> void:
 		apply_central_force(Vector3.UP * delta * 1000.0)  
 		# print("spacebar was pressed")
 	if Input.is_action_pressed("ui_left"):
-		rotate_z(delta)
+		apply_torque(Vector3(0.0, 0.0, -100.0 * delta))
 	if Input.is_action_pressed("ui_right"):
-		rotate_z(-delta)
+		apply_torque(Vector3(0.0, 0.0, 100.0 * delta))
 	 
+   
