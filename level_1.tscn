@@ -58,3 +58,4 @@ transform = Transform3D(-1, 4.440892e-15, -8.742279e-08, -1.407214e-08, 0.986959
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.3596025, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = false
+thrust = 1500.0

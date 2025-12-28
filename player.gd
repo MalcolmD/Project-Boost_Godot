@@ -1,14 +1,20 @@
 extends RigidBody3D
 
+## How mcuh vertical force to apply when moving.
+@export_range(750.0, 3000.0) var thrust: float = 1000.0
+
+## How much rotational force to apply when moving.
+@export var torque_thrust: float = 100.0
+
 # Called every frame. 'delta' is the elapsed time since the previous   frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
-		apply_central_force(basis.y * delta * 1000.0)  
+		apply_central_force(basis.y * delta * thrust)  
 		# print("spacebar was pressed")
 	if Input.is_action_pressed("rotateLeft"):
-		apply_torque(Vector3(0.0, 0.0, -100.0 * delta))
+		apply_torque(Vector3(0.0, 0.0, -torque_thrust * delta))
 	if Input.is_action_pressed("rotateRight"):
-		apply_torque(Vector3(0.0, 0.0, 100.0 * delta))
+		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
 	 
    
 
