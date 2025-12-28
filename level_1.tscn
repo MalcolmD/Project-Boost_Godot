@@ -45,7 +45,7 @@ use_collision = true
 size = Vector3(2.5, 0.5, 3)
 material = SubResource("StandardMaterial3D_3hls8")
 
-[node name="LandingPad" type="CSGBox3D" parent="."]
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.019, 0)
 use_collision = true
 size = Vector3(2.5, 0.46105957, 3)
