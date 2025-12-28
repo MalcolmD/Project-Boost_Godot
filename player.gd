@@ -14,4 +14,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	print(body.name)
+	if body.name == "LandingPad":
+		print("You Win!")
