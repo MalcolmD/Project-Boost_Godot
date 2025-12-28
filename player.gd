@@ -15,12 +15,18 @@ func _process(delta: float) -> void:
 		apply_torque(Vector3(0.0, 0.0, -torque_thrust * delta))
 	if Input.is_action_pressed("rotateRight"):
 		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
-	 
-   
-
 
 func _on_body_entered(body: Node) -> void:
 	if "Goal" in body.get_groups():
-		print("You Made It!")
+		complete_level()
 	if "Hazard" in body.get_groups():
-		print("You Crashed!")
+		crash_sequence()
+
+func crash_sequence() -> void:
+	print("KABOOM! You crashed!")
+	#call_deferred()
+	get_tree().reload_current_scene()
+	
+func complete_level() -> void:
+	print("You Made It!")
+	get_tree().quit()
