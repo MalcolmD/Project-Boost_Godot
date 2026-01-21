@@ -6,6 +6,8 @@ extends RigidBody3D
 ## How much rotational force to apply when moving.
 @export var torque_thrust: float = 100.0
 
+var is_transitioning: bool = false
+
 # Called every frame. 'delta' is the elapsed time since the previous   frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
@@ -17,16 +19,40 @@ func _process(delta: float) -> void:
 		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
 
 func _on_body_entered(body: Node) -> void:
-	if "Goal" in body.get_groups():		
-		complete_level(body.file_path)
-	if "Hazard" in body.get_groups():
-		crash_sequence()
+	if is_transitioning == false:
+		if "Goal" in body.get_groups():		
+			complete_level(body.file_path)
+		if "Hazard" in body.get_groups():
+			crash_sequence()
 
 func crash_sequence() -> void:
 	print("KABOOM! You crashed!")
+	
+	# Set state variable so we don't register multiple crashes.
+	is_transitioning = true
+	
+	# Disable the _process function (stop player input)
+	set_process(false)
+	
+	# Create delay before reloading.
+	var tween = create_tween()
+	tween.tween_interval(1.0)
+	tween.tween_callback(get_tree().reload_current_scene)
 	#call_deferred()
-	get_tree().call_deferred("reload_current_scene")
+	#get_tree().call_deferred("reload_current_scene")
 	
 func complete_level(next_level_file) -> void:
 	print("You Made It!")
-	get_tree().call_deferred("change_scene_to_file", next_level_file)
+	
+	# Set state variable so we don't register multiple crashes.
+	is_transitioning = true
+	
+	# Disable the _process function (stop player input)
+	set_process(false)
+	
+		# Create delay before reloading.
+	var tween = create_tween()
+	tween.tween_interval(1.0)
+	tween.tween_callback(get_tree().change_scene_to_file.bind(next_level_file))
+	
+	#get_tree().call_deferred("change_scene_to_file", next_level_file)
