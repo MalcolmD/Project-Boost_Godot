@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://7gjeruospfl1"]
+[gd_scene load_steps=9 format=3 uid="uid://7gjeruospfl1"]
 
-[ext_resource type="PackedScene" uid="uid://b5vvcmle4nqtm" path="res://player.tscn" id="1_3hls8"]
+[ext_resource type="Script" uid="uid://biex6c3oepp5r" path="res://levels/landing_pad.gd" id="1_jirdo"]
+[ext_resource type="PackedScene" uid="uid://b5vvcmle4nqtm" path="res://player.tscn" id="2_bt44k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilcil"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,11 +51,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.019, 0)
 use_collision = true
 size = Vector3(2.5, 0.46105957, 3)
 material = SubResource("StandardMaterial3D_hbghi")
+script = ExtResource("1_jirdo")
+file_path = "uid://b6nvqugycthue"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.440892e-15, -8.742279e-08, -1.407214e-08, 0.9869599, 0.16096656, 8.628278e-08, 0.16096656, -0.9869599, -0.6545396, 4.2502656, -11.447985)
 
-[node name="Player" parent="." instance=ExtResource("1_3hls8")]
+[node name="Player" parent="." instance=ExtResource("2_bt44k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.3596025, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = false

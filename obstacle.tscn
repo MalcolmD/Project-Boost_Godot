@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6pgfkk7ltf5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcbvg"]
+albedo_color = Color(0.92245954, 0.33251074, 0.3181637, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sl1jc"]
+size = Vector3(1.5, 7, 5)
+
+[node name="Obstacle" type="RigidBody3D"]
+gravity_scale = 0.0
+
+[node name="Obstacle" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6690859, 3.1142974, 0)
+use_collision = true
+size = Vector3(1.5, 7, 5)
+material = SubResource("StandardMaterial3D_qcbvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6690859, 3.1142974, 0)
+shape = SubResource("BoxShape3D_sl1jc")
