@@ -29,4 +29,4 @@ func crash_sequence() -> void:
 	
 func complete_level(next_level_file) -> void:
 	print("You Made It!")
-	get_tree().change_scene_to_file(next_level_file)
+	get_tree().call_deferred("change_scene_to_file", next_level_file)
